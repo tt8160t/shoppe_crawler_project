@@ -47,14 +47,7 @@ jobs:
       - name: test selenium crawler
         run: python shoppe.py
       
-      - name: check file list
-        run: ls -al
 
-      - name: compress files   # zipfile module is not working
-        run: zip -r test.zip result
-
-      - name: check file list 2
-        run: ls -al
 
 
 
