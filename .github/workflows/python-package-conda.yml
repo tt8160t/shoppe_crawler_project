@@ -46,7 +46,16 @@ jobs:
 
       - name: test selenium crawler
         run: python shoppe.py
-      
+        
+      - name: send Telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            From: ${{ github.event.sender.login }}
+          document: shoppe.py
+          photo: 三多偉力健關鍵營養素.png
 
 
 
