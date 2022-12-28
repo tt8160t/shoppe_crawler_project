@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    # trigger every Monday to Friday at 2:00 UTC
+    # trigger every Monday to Friday at 16.00 UTC
     - cron: "0 16 * * 1-5"
 
   # Allows you to run this workflow manually from the Actions tab
@@ -29,20 +29,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: install required modules
-        run: pip install -r requirements.txt
-      
-      # - name: start crawler (needs ~5min)
-      #   run: python shoppe.py
-
-      - name: Remove Chrome
-        run: sudo apt purge google-chrome-stable
-      - name: Remove default Chromium
-        run: sudo apt purge chromium-browser
-      - name: install Chromium
-        run: sudo apt-get install -y chromium-browser
-
-      - name: check Chromium version
-        run: chromedriver --version
+        run: pip install -r requirements.txt  
 
       - name: test selenium crawler
         run: python shoppe.py
@@ -61,11 +48,4 @@ jobs:
 
 
       
-      # - name: send telegram message
-      #   uses: appleboy/telegram-action@master
-      #   with:
-      #     to: ${{ secrets.TELEGRAM_CHAT_ID }}
-      #     token: ${{ secrets.TELEGRAM_TOKEN }}
-      #     message: |
-      #       From: ${{ github.event.sender.login }}
-      #     document: result/三多偉力健女性營養素.html
+
